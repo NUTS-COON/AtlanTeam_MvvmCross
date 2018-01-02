@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="8dp"
+    android:layout_marginStart="8dp"
+    android:layout_marginTop="16dp">
+  <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+      xmlns:app="http://schemas.android.com/apk/res-auto"
+      xmlns:tools="http://schemas.android.com/tools"
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:foreground="?android:selectableItemBackground"
+      app:cardCornerRadius="5dp"
+      android:layout_marginEnd="8dp"
+      android:layout_marginStart="8dp"
+      android:layout_marginTop="16dp">
+
+    <android.support.constraint.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="8dp"
+        android:layout_marginRight="8dp"
+        android:orientation="vertical">
+
+      <TextView
+          android:id="@+id/tv15"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="8dp"
+          android:layout_marginStart="8dp"
+          android:layout_marginTop="4dp"
+          android:text="User № "
+          android:textSize="22sp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.501"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+      <TextView
+          android:id="@+id/tv2"
+          android:layout_width="79dp"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="40dp"
+          android:text="Name: "
+          android:textColor="@android:color/black"
+          android:textSize="16sp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.006"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toTopOf="parent" />
+
+      <TextView
+          android:id="@+id/tv22"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="12dp"
+          android:text="Username: "
+          android:textColor="@android:color/black"
+          android:textSize="16sp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.006"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/user_name" />
+
+      <TextView
+          android:id="@+id/tv20"
+          android:layout_width="78dp"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="12dp"
+          android:text="Email: "
+          android:textColor="@android:color/black"
+          android:textSize="16sp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.006"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/user_username" />
+
+      <TextView
+          android:id="@+id/tv18"
+          android:layout_width="80dp"
+          android:layout_height="23dp"
+          android:layout_marginEnd="8dp"
+          android:layout_marginTop="12dp"
+          android:text="Phone: "
+          android:textColor="@android:color/black"
+          android:textSize="16sp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.0"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/user_email" />
+
+      <TextView
+          android:id="@+id/tv19"
+          android:layout_width="80dp"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="8dp"
+          android:layout_marginTop="12dp"
+          android:text="Address: "
+          android:textColor="@android:color/black"
+          android:textSize="16sp"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.0"
+          app:layout_constraintStart_toStartOf="parent"
+          app:layout_constraintTop_toBottomOf="@+id/user_phone" />
+
+      <TextView
+          android:id="@+id/user_name"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="8dp"
+          android:layout_marginStart="8dp"
+          android:layout_marginTop="8dp"
+          android:textSize="16sp"
+          app:MvxBind="Text Name"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toEndOf="@+id/tv2"
+          app:layout_constraintTop_toBottomOf="@+id/tv15" />
+
+      <TextView
+          android:id="@+id/user_username"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="8dp"
+          android:layout_marginStart="8dp"
+          android:layout_marginTop="12dp"
+          android:textSize="16sp"
+          app:MvxBind="Text Username"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toEndOf="@+id/tv22"
+          app:layout_constraintTop_toBottomOf="@+id/user_name" />
+
+      <TextView
+          android:id="@+id/user_email"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="8dp"
+          android:layout_marginStart="8dp"
+          android:layout_marginTop="12dp"
+          android:textSize="16sp"
+          app:MvxBind="Text Email"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toEndOf="@+id/tv20"
+          app:layout_constraintTop_toBottomOf="@+id/user_username" />
+
+      <TextView
+          android:id="@+id/user_phone"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="8dp"
+          android:layout_marginStart="8dp"
+          android:layout_marginTop="12dp"
+          android:textSize="16sp"
+          app:MvxBind="Text Phone"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toEndOf="@+id/tv18"
+          app:layout_constraintTop_toBottomOf="@+id/user_email" />
+
+      <TextView
+          android:id="@+id/user_address"
+          android:layout_width="0dp"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="8dp"
+          android:layout_marginStart="8dp"
+          android:layout_marginTop="12dp"
+          android:textSize="16sp"
+          app:MvxBind="Text FullAddress"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintStart_toEndOf="@+id/tv19"
+          app:layout_constraintTop_toBottomOf="@+id/user_phone" />
+
+      <TextView
+          android:id="@+id/user_id"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:layout_marginEnd="8dp"
+          android:layout_marginTop="4dp"
+          android:textSize="22sp"
+          app:MvxBind="Text Id"
+          app:layout_constraintEnd_toEndOf="parent"
+          app:layout_constraintHorizontal_bias="0.0"
+          app:layout_constraintStart_toEndOf="@+id/tv15"
+          app:layout_constraintTop_toTopOf="parent" />
+
+    </android.support.constraint.ConstraintLayout>
+  </android.support.v7.widget.CardView>
+</FrameLayout>

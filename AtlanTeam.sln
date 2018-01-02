@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27130.2010
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtlanTeam.Core", "AtlanTeam.Core\AtlanTeam.Core.csproj", "{6CF3B312-735A-47D4-B552-6D1317BA5B05}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AtlanTeam.Droid", "AtlanTeam.Droid\AtlanTeam.Droid.csproj", "{382ABC4A-DFFD-4C6D-94E9-6878D7C809CC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{6CF3B312-735A-47D4-B552-6D1317BA5B05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6CF3B312-735A-47D4-B552-6D1317BA5B05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6CF3B312-735A-47D4-B552-6D1317BA5B05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6CF3B312-735A-47D4-B552-6D1317BA5B05}.Release|Any CPU.Build.0 = Release|Any CPU
+		{382ABC4A-DFFD-4C6D-94E9-6878D7C809CC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{382ABC4A-DFFD-4C6D-94E9-6878D7C809CC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{382ABC4A-DFFD-4C6D-94E9-6878D7C809CC}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{382ABC4A-DFFD-4C6D-94E9-6878D7C809CC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{382ABC4A-DFFD-4C6D-94E9-6878D7C809CC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{382ABC4A-DFFD-4C6D-94E9-6878D7C809CC}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {9DC44316-0A18-4629-B3E6-8ED51604BC65}
+	EndGlobalSection
+EndGlobal
