@@ -39,10 +39,10 @@ namespace AtlanTeam.Core.ViewModels
         {
             List<User> newList = new List<User>();
             bool errFlag = true;
-            int timeout = 0;
+            int attempt = 0;
             return Task.Run(() =>
             {
-                for (int i = 1; i <= 5; i++)
+                for (int i = 1; i <= 10; i++)
                 {
                     _dataService.LoadUser(i,
                         result =>
@@ -63,8 +63,8 @@ namespace AtlanTeam.Core.ViewModels
                 }
                 while (true)
                 {
-                    timeout++;
-                    if (newList.Count < 5 && timeout < 50 && errFlag) { Task.Delay(100).Wait(); }
+                    attempt++;
+                    if (newList.Count < 10 && attempt < 100 && errFlag) { Task.Delay(100).Wait(); }
                     else { break; }
                 }
                 newList.Sort((a, b) => a.Id.CompareTo(b.Id));

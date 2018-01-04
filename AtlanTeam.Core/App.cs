@@ -1,7 +1,6 @@
-using MvvmCross.Core.ViewModels;
+using AtlanTeam.Core.Repository;
 using MvvmCross.Platform;
 using MvvmCross.Platform.IoC;
-using AtlanTeam.Core.Services;
 
 namespace AtlanTeam.Core
 {
@@ -14,10 +13,7 @@ namespace AtlanTeam.Core
                 .AsInterfaces()
                 .RegisterAsLazySingleton();
 
-            //Mvx.RegisterType<IDataService, DataService>();
-            //Mvx.RegisterType<IRestAPIService, RestAPIService>();
-            //RegisterAppStart<ViewModels.MainViewModel>();
-            //Mvx.RegisterSingleton<IMvxAppStart>(new MvxAppStart<ViewModels.MainViewModel>());
+            Mvx.LazyConstructAndRegisterSingleton<ISQLiteRepository, SQLiteRepository>();
             RegisterNavigationServiceAppStart<ViewModels.MainViewModel>();
         }
     }

@@ -1,4 +1,6 @@
 ﻿using AtlanTeam.Core.Services;
+using AtlanTeam.Core.Repository;
+using AtlanTeam.Core.Models;
 using MvvmCross.Core.ViewModels;
 
 namespace AtlanTeam.Core.ViewModels
@@ -6,11 +8,25 @@ namespace AtlanTeam.Core.ViewModels
     public class PostCardViewModel : MvxViewModel
     {
         private IDataService _dataService;
+        private ISQLiteRepository _repository;
 
-        public PostCardViewModel(IDataService dataService)
+        public PostCardViewModel(IDataService dataService, ISQLiteRepository repository)
         {
             _dataService = dataService;
-            LoadData();
+            _repository = repository;
+            var post = repository.GetObject<Post>();
+            if (post != null)
+            {
+                LoadUserName(post.UserId);
+                UserId = post.UserId;
+                PostId = post.Id;
+                Title = post.Title;
+                Body = post.Body;
+            }
+            else
+            {
+                LoadData();
+            }            
         }
 
         private int _postId = 1;
@@ -23,6 +39,15 @@ namespace AtlanTeam.Core.ViewModels
                 else { SetProperty(ref _postId, value); }
             }
         }
+
+        private int _userId;
+        public int UserId
+        {
+            get { return _userId; }
+            set { _userId = value; }
+        }
+
+
 
         private string _user;
         public string User
@@ -49,7 +74,11 @@ namespace AtlanTeam.Core.ViewModels
         public bool IsLoading
         {
             get { return _isLoading; }
-            set { SetProperty(ref _isLoading, value); }
+            set
+            {                
+                SetProperty(ref _isLoading, value);
+                if (!_isLoading) { SaveData(); }
+            }
         }
 
         private bool _startEdit = false;
@@ -82,7 +111,6 @@ namespace AtlanTeam.Core.ViewModels
             EndEdit = !EndEdit;
         }
 
-
         private void LoadData()
         {
             IsLoading = true;
@@ -107,9 +135,21 @@ namespace AtlanTeam.Core.ViewModels
                 result =>
                 {
                     User = result.Username;
+                    UserId = result.Id;
                     IsLoading = (result.Id < -1);
                 },
                 error => {});
+        }
+
+        private void SaveData()
+        {
+            _repository.SaveObject<Post>(new Post
+            {
+                Id = PostId,
+                UserId = UserId,
+                Title = Title,
+                Body = Body
+            });
         }
 
     }

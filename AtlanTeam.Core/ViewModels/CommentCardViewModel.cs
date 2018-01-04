@@ -1,16 +1,33 @@
 ﻿using MvvmCross.Core.ViewModels;
 using AtlanTeam.Core.Services;
+using AtlanTeam.Core.Repository;
+using AtlanTeam.Core.Models;
 
 namespace AtlanTeam.Core.ViewModels
 {
     public class CommentCardViewModel : MvxViewModel
     {
         private IDataService _dataService;
+        private ISQLiteRepository _repository;
 
-        public CommentCardViewModel(IDataService DataService)
+        public CommentCardViewModel(IDataService DataService, ISQLiteRepository repository)
         {
             _dataService = DataService;
-            LoadData();
+            _repository = repository;
+            var comment = _repository.GetObject<Comment>();
+            if(comment != null)
+            {
+                LoadPostTitle(comment.PostId);
+                PostId = comment.PostId;
+                CommentId = comment.Id;
+                Name = comment.Name;
+                UserEmail = comment.Email;
+                Comment = comment.Body;
+            }
+            else
+            {
+                LoadData();
+            }            
         }
 
         private int _commentId = 1;
@@ -22,6 +39,13 @@ namespace AtlanTeam.Core.ViewModels
                 if (value > 500) { CommentId = 500; }
                 else { SetProperty(ref _commentId, value); }
             }
+        }
+
+        private int _postId;
+        public int PostId
+        {
+            get { return _postId; }
+            set { _postId = value; }
         }
 
 
@@ -57,7 +81,11 @@ namespace AtlanTeam.Core.ViewModels
         public bool IsLoading
         {
             get { return _isLoading; }
-            set { SetProperty(ref _isLoading, value); }
+            set
+            {                
+                SetProperty(ref _isLoading, value);
+                if (!_isLoading) { SaveData(); }
+            }
         }
 
         private bool _startEdit = false;
@@ -96,7 +124,8 @@ namespace AtlanTeam.Core.ViewModels
             _dataService.LoadComment(CommentId,
                 result =>
                 {
-                    LoadPost(result.PostId);
+                    LoadPostTitle(result.PostId);
+                    PostId = result.PostId;
                     Name = result.Name;
                     UserEmail = result.Email;
                     Comment = result.Body.Replace("\n", "/n");
@@ -107,7 +136,7 @@ namespace AtlanTeam.Core.ViewModels
                 });
         }
 
-        private void LoadPost(int postId)
+        private void LoadPostTitle(int postId)
         {
             _dataService.LoadPost(postId,
                 result =>
@@ -116,6 +145,18 @@ namespace AtlanTeam.Core.ViewModels
                     IsLoading = (result.Id < -1);
                 },
                 error => { });
+        }
+
+        private void SaveData()
+        {
+            _repository.SaveObject<Comment>(new Comment
+            {
+                PostId = PostId,
+                Id = CommentId,
+                Name = Name,
+                Email = UserEmail,
+                Body = Comment
+            });
         }
 
     }
