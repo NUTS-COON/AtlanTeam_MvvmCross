@@ -29,10 +29,13 @@ namespace AtlanTeam.Core.ViewModels
 
         private async void ShowUsers()
         {
-            IsLoading = true;
-            var list = await LoadUserAsync();
-            IsLoading = false;
-            await _navigationService.Navigate<UsersViewModel, List<User>>(list);
+            if (!IsLoading)
+            {
+                IsLoading = true;
+                var list = await LoadUserAsync();
+                IsLoading = false;
+                await _navigationService.Navigate<UsersViewModel, List<User>>(list);
+            }
         }
 
         private Task<List<User>> LoadUserAsync()
